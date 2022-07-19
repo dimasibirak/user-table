@@ -4,17 +4,17 @@
     "target": "ES5",
     "module": "CommonJS",
     "resolveJsonModule": true,
-    
+
     "alwaysStrict": true,
     "noImplicitAny": true,
-    
+
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
     "allowJs": true,
-    
+
     "baseUrl": "./src",
 
-    "noEmit": true
-  }
+    "noEmit": true,
+  },
 }
