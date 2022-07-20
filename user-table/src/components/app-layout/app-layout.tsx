@@ -1,7 +1,9 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, Suspense, lazy } from 'react'
 import { Layout, Menu } from 'antd'
 
 import { IAppLayoutProps } from './types'
+
+const HelloWorld = lazy(() => import('newApp/hello-world'));
 
 import './app-layout.less'
 
@@ -17,7 +19,9 @@ export const AppLayout = ({ children, actions }: IAppLayoutProps) => {
     </Layout.Header>
     <Layout>
       <Layout.Sider className="app-layout-sider" width={350}>
-        {/* Module Federation */}
+        <Suspense fallback={"loading..."}>
+          <HelloWorld />
+        </Suspense>
       </Layout.Sider>
       <Layout.Content className="app-layout-content">
         {children}

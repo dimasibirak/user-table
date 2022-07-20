@@ -16,5 +16,12 @@
     "baseUrl": "./src",
 
     "noEmit": true,
+
+    "isolatedModules": true,
+
+    "typeRoots": ["./node_modules/@types"],
+    "include": [
+      "**/*.d.ts"
+    ]
   },
 }

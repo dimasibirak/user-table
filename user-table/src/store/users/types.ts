@@ -1,4 +1,4 @@
-import { IUser } from 'models'
+import { IUser } from 'user-table/src/models'
 
 export interface IUsersState {
   fetching: boolean

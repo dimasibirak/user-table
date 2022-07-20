@@ -1,0 +1,25 @@
+{
+  "exclude": [
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "CommonJS",
+    "resolveJsonModule": true,
+
+    "alwaysStrict": true,
+    "noImplicitAny": true,
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "allowJs": true,
+
+    "baseUrl": "./src",
+
+    "typeRoots": [
+      "./node_modules/@types", "../global.d.ts"],
+
+    "noEmit": true
+  }
+}

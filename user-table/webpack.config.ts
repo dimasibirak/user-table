@@ -1,7 +1,10 @@
-import path from 'path'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { Configuration as WebpackConfiguration } from 'webpack'
-import { Configuration as DevServerConfiguration } from 'webpack-dev-server'
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { Configuration as WebpackConfiguration, container } from 'webpack';
+import { Configuration as DevServerConfiguration } from 'webpack-dev-server';
+const ExternalTemplateRemotesPlugin = require('external-remotes-plugin');
+
+const { ModuleFederationPlugin } = container;
 
 export default (_: never, { mode = 'development' }: IWebpackArgs): Configuration => {
   return {
@@ -10,7 +13,7 @@ export default (_: never, { mode = 'development' }: IWebpackArgs): Configuration
     devtool: mode == 'development' ? 'source-map' : false,
     devServer: {
       hot: true,
-      port: 8080
+      port: 8090
     },
 
     entry: './src/index',
@@ -55,7 +58,14 @@ export default (_: never, { mode = 'development' }: IWebpackArgs): Configuration
       new HtmlWebpackPlugin({
         title: 'User Table',
         template: 'public/index.html'
-      })
+      }),
+      new ModuleFederationPlugin({
+        name: "user-table",
+        remotes: {
+          newApp: "newApp@[newAppUrl]/remoteEntry.js",
+        },
+      }),
+      new ExternalTemplateRemotesPlugin(),
     ]
   }
 }
